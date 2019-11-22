@@ -1,13 +1,14 @@
 extends Node
 class_name ServerAdvertiser
 
-const PORT := 3111
+const DEFAULT_PORT := 3111
 
 export (float) var broadcast_interval: float = 1.0
 var serverInfo := {"name": "LAN Game"}
 
 var socketUDP: PacketPeerUDP
 var broadcastTimer := Timer.new()
+var broadcastPort := DEFAULT_PORT
 
 func _enter_tree():
 	broadcastTimer.wait_time = broadcast_interval
@@ -19,7 +20,7 @@ func _enter_tree():
 		broadcastTimer.connect("timeout", self, "broadcast") 
 		
 		socketUDP = PacketPeerUDP.new()
-		socketUDP.set_dest_address('255.255.255.255', PORT)
+		socketUDP.set_dest_address('255.255.255.255', broadcastPort)
 
 func broadcast():
 	#print('Broadcasting game...')
