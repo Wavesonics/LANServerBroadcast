@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TestLobby.gd" type="Script" id=1]
+[ext_resource path="res://server_advertiser/ServerAdvertiser.gd" type="Script" id=2]
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+advertiserPath = NodePath("ServerAdvertiser")
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -7.0
+margin_right = 40.0
+margin_bottom = 7.0
+text = "Game Lobby"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerAdvertiser" type="Node" parent="."]
+script = ExtResource( 2 )

@@ -1,5 +1,5 @@
 extends Node
-class_name ServerListener, 'res://utilities/server_advertiser/ServerListener.png'
+class_name ServerListener, 'res://server_listener/ServerListener.png'
 
 signal new_server
 signal remove_server

@@ -4,7 +4,7 @@ class_name ServerAdvertiser
 const PORT := 3111
 
 export (float) var broadcast_interval: float = 1.0
-var server_name := 'LAN Server'
+var serverInfo := {"name": "LAN Game"}
 
 var socketUDP: PacketPeerUDP
 var broadcastTimer := Timer.new()
@@ -22,13 +22,8 @@ func _enter_tree():
 		socketUDP.set_dest_address('255.255.255.255', PORT)
 
 func broadcast():
-	var info = {'name' : server_name,
-				'port' : Network.gameData.serverPort,
-				'players' : Network.gameData.players.size(),
-				'numGames' : Network.gameData.numGames + 1}
-	
 	#print('Broadcasting game...')
-	var packetMessage := to_json(info)
+	var packetMessage := to_json(serverInfo)
 	var packet := packetMessage.to_ascii()
 	socketUDP.put_packet(packet)
 

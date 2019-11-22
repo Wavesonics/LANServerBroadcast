@@ -21,12 +21,13 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ServerAdvertiser": "",
-"ServerListener": ""
+"ServerListener": "res://server_listener/ServerListener.png"
 }
 
 [application]
 
 config/name="LANServerBroadcast"
+run/main_scene="res://TestMainMenu.tscn"
 config/icon="res://icon.png"
 
 [rendering]
