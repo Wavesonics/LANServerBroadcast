@@ -20,6 +20,7 @@ func _enter_tree():
 		broadcastTimer.connect("timeout", self, "broadcast") 
 		
 		socketUDP = PacketPeerUDP.new()
+		socketUDP.set_broadcast_enabled(true)
 		socketUDP.set_dest_address('255.255.255.255', broadcastPort)
 
 func broadcast():
