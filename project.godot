@@ -12,22 +12,22 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ServerAdvertiser",
 "language": "GDScript",
-"path": "res://server_advertiser/ServerAdvertiser.gd"
+"path": "res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.gd"
 }, {
 "base": "Node",
 "class": "ServerListener",
 "language": "GDScript",
-"path": "res://server_listener/ServerListener.gd"
+"path": "res://addons/LANServerBroadcast/server_listener/ServerListener.gd"
 } ]
 _global_script_class_icons={
-"ServerAdvertiser": "",
-"ServerListener": "res://server_listener/ServerListener.png"
+"ServerAdvertiser": "res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.png",
+"ServerListener": "res://addons/LANServerBroadcast/server_listener/ServerListener.png"
 }
 
 [application]
 
 config/name="LANServerBroadcast"
-run/main_scene="res://TestMainMenu.tscn"
+run/main_scene="res://example/TestMainMenu.tscn"
 config/icon="res://icon.png"
 
 [rendering]

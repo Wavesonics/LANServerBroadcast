@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://addons/LANServerBroadcast/server_listener/ServerListener.gd" type="Script" id=1]
+[ext_resource path="res://example/TestServerBrowser.gd" type="Script" id=2]
+
+[node name="ServerBrowser" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+serverListPath = NodePath("ServerList")
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -40.5
+margin_right = 40.5
+margin_bottom = 14.0
+text = "LAN Servers:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerList" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ServerListener" type="Node" parent="."]
+script = ExtResource( 1 )
+[connection signal="new_server" from="ServerListener" to="." method="_on_ServerListener_new_server"]
+[connection signal="remove_server" from="ServerListener" to="." method="_on_ServerListener_remove_server"]

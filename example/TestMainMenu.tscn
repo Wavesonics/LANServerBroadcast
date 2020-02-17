@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://example/TestMainMenu.gd" type="Script" id=1]
+
+[node name="Control" type="VBoxContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -256.0
+margin_right = 256.0
+margin_bottom = 256.0
+alignment = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 216.0
+margin_right = 512.0
+margin_bottom = 247.0
+text = "Main Menu
+"
+align = 1
+valign = 1
+
+[node name="HostButton" type="Button" parent="."]
+margin_top = 251.0
+margin_right = 512.0
+margin_bottom = 271.0
+text = "Host Game"
+
+[node name="BrowseButton" type="Button" parent="."]
+margin_top = 275.0
+margin_right = 512.0
+margin_bottom = 295.0
+text = "Browse LAN Games"
+[connection signal="pressed" from="HostButton" to="." method="_on_HostButton_pressed"]
+[connection signal="pressed" from="BrowseButton" to="." method="_on_BrowseButton_pressed"]
