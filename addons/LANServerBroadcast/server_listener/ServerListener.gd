@@ -11,10 +11,10 @@ var knownServers = {}
 
 # Number of seconds to wait when a server hasn't been heard from
 # before calling remove_server
-export (int) var serverCleanupThreshold: int = 3
+export (int) var server_cleanup_threshold: int = 3
 
 func _init():
-	cleanUpTimer.wait_time = serverCleanupThreshold
+	cleanUpTimer.wait_time = server_cleanup_threshold
 	cleanUpTimer.one_shot = false
 	cleanUpTimer.autostart = true
 	cleanUpTimer.connect("timeout", self, 'clean_up')
@@ -53,7 +53,7 @@ func clean_up():
 	var now = OS.get_unix_time()
 	for serverIp in knownServers:
 		var serverInfo = knownServers[serverIp]
-		if (now - serverInfo.lastSeen) > serverCleanupThreshold:
+		if (now - serverInfo.lastSeen) > server_cleanup_threshold:
 			knownServers.erase(serverIp)
 			print('Remove old server: %s' % serverIp)
 			emit_signal("remove_server", serverIp)
