@@ -9,10 +9,12 @@ var socketUDP := PacketPeerUDP.new()
 var listenPort := ServerAdvertiser.DEFAULT_PORT
 var knownServers = {}
 
-const CLEANUP_THRESHOLD := 3
+# Number of seconds to wait when a server hasn't been heard from
+# before calling remove_server
+export (int) var serverCleanupThreshold: int = 3
 
 func _init():
-	cleanUpTimer.wait_time = CLEANUP_THRESHOLD
+	cleanUpTimer.wait_time = serverCleanupThreshold
 	cleanUpTimer.one_shot = false
 	cleanUpTimer.autostart = true
 	cleanUpTimer.connect("timeout", self, 'clean_up')
@@ -51,7 +53,7 @@ func clean_up():
 	var now = OS.get_unix_time()
 	for serverIp in knownServers:
 		var serverInfo = knownServers[serverIp]
-		if (now - serverInfo.lastSeen) > CLEANUP_THRESHOLD:
+		if (now - serverInfo.lastSeen) > serverCleanupThreshold:
 			knownServers.erase(serverIp)
 			print('Remove old server: %s' % serverIp)
 			emit_signal("remove_server", serverIp)

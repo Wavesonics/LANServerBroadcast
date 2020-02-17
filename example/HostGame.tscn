@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://example/TestLobby.gd" type="Script" id=1]
-[ext_resource path="res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.gd" type="Script" id=2]
+[ext_resource path="res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.gd" type="Script" id=1]
+[ext_resource path="res://example/HostGame.gd" type="Script" id=2]
 
 [node name="Lobby" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,4 +27,4 @@ __meta__ = {
 }
 
 [node name="ServerAdvertiser" type="Node" parent="."]
-script = ExtResource( 2 )
+script = ExtResource( 1 )

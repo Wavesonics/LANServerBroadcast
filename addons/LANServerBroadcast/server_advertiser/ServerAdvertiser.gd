@@ -3,6 +3,7 @@ class_name ServerAdvertiser, 'res://addons/LANServerBroadcast/server_advertiser/
 
 const DEFAULT_PORT := 3111
 
+# How often to broadcast out to the network that this host is active
 export (float) var broadcast_interval: float = 1.0
 var serverInfo := {"name": "LAN Game"}
 

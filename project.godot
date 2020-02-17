@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LANServerBroadcast"
-run/main_scene="res://example/TestMainMenu.tscn"
+run/main_scene="res://example/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [rendering]

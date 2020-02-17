@@ -5,6 +5,7 @@ onready var advertiser := get_node(advertiserPath)
 
 const PORT := 3333
 
+
 func _enter_tree():
 	var peer = NetworkedMultiplayerENet.new()
 	var result = peer.create_server(PORT)
@@ -13,6 +14,7 @@ func _enter_tree():
 		print("Game hosted")
 	else:
 		print("Failed to host game")
+
 
 func _ready():
 	# Set this lobby's info to be advertised
