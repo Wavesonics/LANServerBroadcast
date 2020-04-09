@@ -1,5 +1,5 @@
 extends Node
-class_name ServerAdvertiser, 'res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.png'
+#class_name ServerAdvertiser, 'res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.png'
 
 const DEFAULT_PORT := 3111
 
