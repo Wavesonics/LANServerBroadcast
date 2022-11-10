@@ -23,6 +23,9 @@ func _enter_tree():
 		socketUDP = PacketPeerUDP.new()
 		socketUDP.set_broadcast_enabled(true)
 		socketUDP.set_dest_address('255.255.255.255', broadcastPort)
+		print("Broadcast started successfully.")
+	else:
+		print("Broadcast error: Current network peer is not in server mode.")
 
 func broadcast():
 	#print('Broadcasting game...')
