@@ -6,6 +6,8 @@ These allow you to setup a dead simple LAN only server browser for multiplayer g
 # Setup for the host
 Add the `ServerAdvertiser` node to your game **Lobby** scene (*but only for the host if it's peer to peer*), this will broadcast the fact that you are hosting on this IP.
 
+Note: Make sure that the network peer is initialized as a server *before* the `ServerAdvertiser` is added to the scene tree.
+
 You can customize the `serverInfo` being broadcast from the lobby by setting entries in the `serverInfo` dictionary on this node.
 ```
     advertiser.serverInfo["name"] = "A great lobby"
