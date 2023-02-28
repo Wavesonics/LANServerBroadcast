@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=2]
+
+[ext_resource path="res://example/assets/fonts/NotoSansJapaneseDynfont.tres" type="DynamicFont" id=2]
+
+[resource]
+default_font = ExtResource( 2 )

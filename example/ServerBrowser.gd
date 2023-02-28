@@ -6,7 +6,8 @@ onready var serverList := get_node(serverListPath)
 func _on_ServerListener_new_server(serverInfo):
 	# Create some UI for the newly found server
 	var serverNode := Label.new()
-	serverNode.text = "%s - %s" % [serverInfo.ip, serverInfo.name]
+	print(serverInfo)
+	serverNode.text = "%s - %s - %s" % [serverInfo.ip, serverInfo.name, serverInfo.nonasciichars]
 	serverList.add_child(serverNode)
 
 func _on_ServerListener_remove_server(serverIp):

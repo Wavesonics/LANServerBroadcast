@@ -19,4 +19,5 @@ func _enter_tree():
 func _ready():
 	# Set this lobby's info to be advertised
 	advertiser.serverInfo["name"] = "A great lobby"
+	advertiser.serverInfo["nonasciichars"] = "そら"
 	advertiser.serverInfo["port"] = PORT
