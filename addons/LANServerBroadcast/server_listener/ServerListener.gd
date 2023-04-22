@@ -1,29 +1,30 @@
+@icon('res://addons/LANServerBroadcast/server_listener/server_listener.png')
 extends Node
-class_name ServerListener, 'res://addons/LANServerBroadcast/server_listener/server_listener.png'
+class_name ServerListener
 
 signal new_server
 signal remove_server
 
 var cleanUpTimer := Timer.new()
 var socketUDP := PacketPeerUDP.new()
-var listenPort := ServerAdvertiser.DEFAULT_PORT
+var listenPort := 4343
 var knownServers = {}
 
 # Number of seconds to wait when a server hasn't been heard from
 # before calling remove_server
-export (int) var server_cleanup_threshold: int = 3
+@export var server_cleanup_threshold: int = 3
 
 func _init():
 	cleanUpTimer.wait_time = server_cleanup_threshold
 	cleanUpTimer.one_shot = false
 	cleanUpTimer.autostart = true
-	cleanUpTimer.connect("timeout", self, 'clean_up')
+	cleanUpTimer.timeout.connect(clean_up)
 	add_child(cleanUpTimer)
 
 func _ready():
 	knownServers.clear()
 	
-	if socketUDP.listen(listenPort) != OK:
+	if socketUDP.bind(listenPort) != OK:
 		print("GameServer LAN service: Error listening on port: " + str(listenPort))
 	else:
 		print("GameServer LAN service: Listening on port: " + str(listenPort))
@@ -38,19 +39,19 @@ func _process(delta):
 			# We've discovered a new server! Add it to the list and let people know
 			if not knownServers.has(serverIp):
 				var serverMessage = array_bytes.get_string_from_ascii()
-				var gameInfo = parse_json(serverMessage)
+				var gameInfo = JSON.parse_string(serverMessage)
 				gameInfo.ip = serverIp
-				gameInfo.lastSeen = OS.get_unix_time()
+				gameInfo.lastSeen = Time.get_unix_time_from_system()
 				knownServers[serverIp] = gameInfo
 				print("New server found: %s - %s:%s" % [gameInfo.name, gameInfo.ip, gameInfo.port])
 				emit_signal("new_server", gameInfo)
 			# Update the last seen time
 			else:
 				var gameInfo = knownServers[serverIp]
-				gameInfo.lastSeen = OS.get_unix_time()
+				gameInfo.lastSeen = Time.get_unix_time_from_system()
 
 func clean_up():
-	var now = OS.get_unix_time()
+	var now = Time.get_unix_time_from_system()
 	for serverIp in knownServers:
 		var serverInfo = knownServers[serverIp]
 		if (now - serverInfo.lastSeen) > server_cleanup_threshold:
