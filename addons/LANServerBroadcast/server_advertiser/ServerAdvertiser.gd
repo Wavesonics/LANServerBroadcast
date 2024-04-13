@@ -30,7 +30,7 @@ func _enter_tree():
 func broadcast():
 	#print('Broadcasting game...')
 	var packetMessage := to_json(serverInfo)
-	var packet := packetMessage.to_ascii()
+	var packet := packetMessage.to_utf8()
 	socketUDP.put_packet(packet)
 
 func _exit_tree():

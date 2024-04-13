@@ -37,7 +37,7 @@ func _process(delta):
 		if serverIp != '' and serverPort > 0:
 			# We've discovered a new server! Add it to the list and let people know
 			if not knownServers.has(serverIp):
-				var serverMessage = array_bytes.get_string_from_ascii()
+				var serverMessage = array_bytes.get_string_from_utf8()
 				var gameInfo = parse_json(serverMessage)
 				gameInfo.ip = serverIp
 				gameInfo.lastSeen = OS.get_unix_time()
