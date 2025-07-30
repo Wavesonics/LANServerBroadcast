@@ -1,10 +1,10 @@
 extends Node
-class_name ServerAdvertiser, 'res://addons/LANServerBroadcast/server_advertiser/server_advertiser.png'
+class_name ServerAdvertiser
 
 const DEFAULT_PORT := 3111
 
 # How often to broadcast out to the network that this host is active
-export (float) var broadcast_interval: float = 1.0
+@export var broadcast_interval: float = 1.0
 var serverInfo := {"name": "LAN Game"}
 
 var socketUDP: PacketPeerUDP
@@ -16,9 +16,9 @@ func _enter_tree():
 	broadcastTimer.one_shot = false
 	broadcastTimer.autostart = true
 	
-	if get_tree().is_network_server():
+	if multiplayer.multiplayer_peer:
 		add_child(broadcastTimer)
-		broadcastTimer.connect("timeout", self, "broadcast") 
+		broadcastTimer.timeout.connect(broadcast)
 		
 		socketUDP = PacketPeerUDP.new()
 		socketUDP.set_broadcast_enabled(true)
@@ -29,8 +29,8 @@ func _enter_tree():
 
 func broadcast():
 	#print('Broadcasting game...')
-	var packetMessage := to_json(serverInfo)
-	var packet := packetMessage.to_utf8()
+	var packetMessage := serverInfo
+	var packet := var_to_bytes(packetMessage)
 	socketUDP.put_packet(packet)
 
 func _exit_tree():
