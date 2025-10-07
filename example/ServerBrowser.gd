@@ -1,7 +1,7 @@
 extends Control
 
-export (NodePath) var serverListPath: NodePath
-onready var serverList := get_node(serverListPath)
+@export var serverListPath: NodePath
+@onready var serverList := get_node(serverListPath)
 
 func _on_ServerListener_new_server(serverInfo):
 	# Create some UI for the newly found server

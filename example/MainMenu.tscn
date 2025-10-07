@@ -1,41 +1,30 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bxy8spfo5d7lg"]
 
-[ext_resource path="res://example/MainMenu.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://bd01h4o60r4pv" path="res://example/MainMenu.gd" id="1"]
 
 [node name="Control" type="VBoxContainer"]
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -256.0
-margin_top = -256.0
-margin_right = 256.0
-margin_bottom = 256.0
 alignment = 1
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
 [node name="Label" type="Label" parent="."]
-margin_top = 216.0
-margin_right = 512.0
-margin_bottom = 247.0
+layout_mode = 2
 text = "Main Menu
 "
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HostButton" type="Button" parent="."]
-margin_top = 251.0
-margin_right = 512.0
-margin_bottom = 271.0
+layout_mode = 2
 text = "Host Game"
 
 [node name="BrowseButton" type="Button" parent="."]
-margin_top = 275.0
-margin_right = 512.0
-margin_bottom = 295.0
+layout_mode = 2
 text = "Browse LAN Games"
+
 [connection signal="pressed" from="HostButton" to="." method="_on_HostButton_pressed"]
 [connection signal="pressed" from="BrowseButton" to="." method="_on_BrowseButton_pressed"]
