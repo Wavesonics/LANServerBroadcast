@@ -6,30 +6,15 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Node",
-"class": "ServerAdvertiser",
-"language": "GDScript",
-"path": "res://addons/LANServerBroadcast/server_advertiser/ServerAdvertiser.gd"
-}, {
-"base": "Node",
-"class": "ServerListener",
-"language": "GDScript",
-"path": "res://addons/LANServerBroadcast/server_listener/ServerListener.gd"
-} ]
-_global_script_class_icons={
-"ServerAdvertiser": "res://addons/LANServerBroadcast/server_advertiser/server_advertiser.png",
-"ServerListener": "res://addons/LANServerBroadcast/server_listener/server_listener.png"
-}
+config_version=5
 
 [application]
 
 config/name="LANServerBroadcast"
 run/main_scene="res://example/MainMenu.tscn"
+config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "LANServerBroadcast" )
+enabled=PackedStringArray("LANServerBroadcast")

@@ -34,11 +34,11 @@ In adition to what ever you added via `advertiser.serverInfo[]` the `ServerListe
 From the example above, access the fields as such:
 ```
 func _on_ServerListener_new_server(serverInfo):
-    serverInfo.ip
-    serverInfo.name
-    serverInfo.port
-    serverInfo.max_players
-    serverInfo.cur_players
+	serverInfo.ip
+	serverInfo.name
+	serverInfo.port
+	serverInfo.max_players
+	serverInfo.cur_players
 ```
 
 To connect to a game, you just grab the IP and Port (*if it's not hard coded for your game*) from the serverInfo, and then perform a normal connection how ever you like.
